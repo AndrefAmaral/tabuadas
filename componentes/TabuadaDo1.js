@@ -1,6 +1,13 @@
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
-export default function TabuadaDo1({navigation}){
+import BotaoVoltar from './BotaoVoltar';
+
+const TabuadaDo1 = ({navigation}) => {
+    
+    const voltarParaTelaInicial = () => {
+        navigation.goBack()
+    }
+    
     return(
         <View style={styles.container}>
             <Text style={styles.paragrafos}>1 x 1 = 1</Text>
@@ -14,16 +21,15 @@ export default function TabuadaDo1({navigation}){
             <Text style={styles.paragrafos}>1 x 9 = 9</Text>
             <Text style={styles.paragrafos}>1 x 10 = 10</Text>
 
-            <View style={styles.botao}>
-                <Button
-                    title='Voltar'
-                    color='#000000'
-                    onPress={()=> navigation.goBack()}
-                />
-            </View>
+            <BotaoVoltar
+                label='Voltar'
+                aoClicar={voltarParaTelaInicial}
+            />
         </View>
     );
 }
+
+export default TabuadaDo1;
 
 const styles = StyleSheet.create({
     container: {
@@ -35,7 +41,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 7
     },
-    botao: {
-        marginTop: 40
-    }
 })
